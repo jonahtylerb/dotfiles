@@ -1,0 +1,26 @@
+[overview]
+enter_command = ["hyprctl", "dispatch", "overview:toggle"]
+locations = ["top_left"]
+size = 10
+timeout_ms = 100
+
+[terminal]
+enter_command = ["hyprctl", "dispatch", "togglespecialworkspace", "bottom"]
+locations = ["bottom"]
+size = 5
+margin = 100
+timeout_ms = 100
+
+[right]
+enter_command = ["hyprctl", "dispatch", "togglespecialworkspace", "right"]
+locations = ["right"]
+size = 5
+margin = 100
+timeout_ms = 100
+
+[left]
+enter_command = ["hyprctl", "dispatch", "togglespecialworkspace", "left"]
+locations = ["left"]
+size = 5
+margin = 100
+timeout_ms = 100

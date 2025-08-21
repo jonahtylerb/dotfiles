@@ -1,0 +1,54 @@
+swipe:
+  3:
+    left:
+      command: "hyprctl dispatch togglespecialworkspace right"
+    right:
+      command: "hyprctl dispatch togglespecialworkspace left"
+    up:
+      command: "hyprctl dispatch togglespecialworkspace bottom"
+    down:
+      command: "~/.config/hypr/toggleSpecial.sh"
+  4:
+    left:
+      command: "hyprctl dispatch workspace +1"
+    right:
+      command: "hyprctl dispatch workspace -1"
+    up:
+      update:
+        command: "brightnessctl s 10%+"
+        interval: 3
+    down:
+      update:
+        command: "brightnessctl s 10%-"
+        interval: 3
+pinch:
+  4:
+    in:
+      command: "hyprctl dispatch overview:toggle"
+    out:
+      command: "hyprctl dispatch overview:toggle"
+rotate:
+  3:
+    clockwise:
+      update:
+        command: "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        interval: 2
+    counterclockwise:
+      update:
+        command: "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        interval: 2
+hold:
+  3:
+    command: "hyprctl dispatch killactive"
+
+threshold:
+  pinch: 0.7
+# begin:
+#   command: ydotool key 125:1; ydotool click 0x40
+#   interval: 0.00
+# update:
+#   command: ydotool mousemove -- $move_x, $move_y
+#   interval: 0.01
+#   accel: 1.70
+# end:
+#   command: ydotool click 0x80; ydotool key 125:0

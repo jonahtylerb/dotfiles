@@ -1,0 +1,78 @@
+//   _____ _____ _____ _____ _____ _____ _____ _____ _____ 
+//  |   __|  _  |   __|_   _|   __|   __|_   _|     |  |  |
+//  |   __|     |__   | | | |   __|   __| | | |   --|     |
+//  |__|  |__|__|_____| |_| |__|  |_____| |_| |_____|__|__|  OS
+//
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "arch_small", // search for logos: fastfetch --list-logos or --print-logos
+    "padding": {
+      "top": 1
+    }
+  },
+  "display": {
+    "separator": "  "
+  },
+  "modules": [
+    "break",
+    "title",
+    {
+      "type": "kernel",
+      "key": "KERNEL",
+      "keyColor": "blue"
+    },
+    {
+      "type": "os",
+      "format": "{2}",
+      "key": "OS    ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "host",
+      "format": "{5}",
+      "key": "HOST  ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "packages",
+      "format": "{} (Pacman)",
+      "key": "PKGS  ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "uptime",
+      "format": "{2}h {3}m",
+      "key": "UPTIME",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wifi",
+      "key": "WIFI",
+      "keyColor": "blue"
+    },
+    "break",
+    {
+      "type": "wm",
+      "key": "WM",
+      "keyColor": "magenta"
+    },
+    "break",
+    {
+      "type": "cpu",
+      "key": "CPU",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "gpu",
+      "key": "GPU",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "memory",
+      "key": "RAM",
+      "keyColor": "yellow"
+    },
+    "break"
+  ]
+}

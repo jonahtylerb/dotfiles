@@ -1,0 +1,40 @@
+@import "../waybar/colors.css";
+
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: transparent;
+}
+
+button {
+	border-radius: 20px;
+	margin: 10px;
+	border: none;
+	outline: none;
+	color: @on_primary_container;
+	background-color: @background;
+	opacity: 0.9;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20%;
+}
+
+button:active, button:hover {
+	background-color: @primary_container;
+}
+
+#lock {
+    background-image: -gtk-icontheme("system-lock-screen-symbolic");
+}
+#logout {
+    background-image: -gtk-icontheme("system-log-out-symbolic");
+}
+#shutdown {
+    background-image: -gtk-icontheme("system-shutdown-symbolic");
+}
+#reboot {
+    background-image: -gtk-icontheme("system-reboot-symbolic");
+}

@@ -1,0 +1,78 @@
+[config.wallpaper]
+command = "echo"
+set = true
+
+[templates.waybar]
+input_path = './templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.kitty]
+input_path = './templates/kitty-colors.conf'
+output_path = '~/.config/kitty/current-theme.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.hyprland]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
+
+[templates.tofi]
+input_path = './templates/tofi-colors'
+output_path = '~/.config/tofi/colors'
+
+[templates.gtk3]
+input_path = './templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme ~/.themes/adw-gtk3-dark'
+
+[templates.gtk4]
+input_path = './templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
+
+[templates.qt6ct]
+input_path = './templates/qtct-colors.conf'
+output_path = '~/.config/qt6ct/colors/matugen.conf'
+
+[templates.pywalfox]
+input_path = './templates/pywalfox-colors.json'
+output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox update'
+
+[templates.folder]
+input_path = './templates/folder-color.txt'
+output_path = './papirus-folders/folder-color.txt'
+colors_to_compare = [
+  { name = "adwaita", color = "#93C0EA" },
+  { name = "black", color = "#4F4F4F" },
+  { name = "blue", color = "#5294E2" },
+  { name = "bluegrey", color = "#607D8B" },
+  { name = "breeze", color = "#57B8EC" },
+  { name = "brown", color = "#AE8E6C" },
+  { name = "carmine", color = "#A30002" },
+  { name = "cyan", color = "#00BCD4" },
+  { name = "darkcyan", color = "#45ABB7" },
+  { name = "deeporange", color = "#EB6637" },
+  { name = "green", color = "#87B158" },
+  { name = "grey", color = "#8E8E8E" },
+  { name = "indigo", color = "#5C6BC0" },
+  { name = "megenta", color = "#CA71DF" },
+  { name = "nordic", color = "#81A1C1" },
+  { name = "orange", color = "#EE923A" },
+  { name = "palebrown", color = "#D1BFAE" },
+  { name = "paleorange", color = "#EECA8F" },
+  { name = "pink", color = "#F06292" },
+  { name = "red", color = "#E25252" },
+  { name = "teal", color = "#16A085" },
+  { name = "violet", color = "#7E57C2" },
+  { name = "white", color = "#E4E4E4" },
+  { name = "yaru", color = "#676767" },
+  { name = "yellow", color = "#F9BD30" },
+]
+compare_to = "{{colors.primary.default.hex}}"
+post_hook = "papirus-folders -C {{closest_color}} --theme Papirus-Dark"
+
+[templates.cava]
+input_path = './templates/cava-colors.ini'
+output_path = '~/.config/cava/config'
+post_hook = "pkill -USR1 cava"

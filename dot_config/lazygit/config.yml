@@ -1,0 +1,13 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+  branchPrefix: "jbrupbacher/"
+notARepository: "skip"
+gui:
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 2
+  nerdFontsVersion: "3"
+  branchColorPatterns:
+    "^(jonahtylerb|jbrupbacher)": cyan
+    "master": yellow

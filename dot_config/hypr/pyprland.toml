@@ -1,0 +1,23 @@
+[pyprland]
+plugins = ["scratchpads", "magnify", "fetch_client_menu", "toggle_special"]
+
+[scratchpads.template]
+unfocus = "hide"
+lazy = true
+hysteresis = 0
+max_size = "100% 100%"
+margin = 10
+
+[scratchpads.calc]
+use = "template"
+animation = "fromRight"
+command = "gnome-calculator"
+class = "org.gnome.Calculator"
+size = "400px 60%"
+
+[scratchpads.notes]
+use = "template"
+animation = "fromRight"
+command = "gnome-text-editor"
+class = "org.gnome.TextEditor"
+size = "400px 60%"

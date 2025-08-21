@@ -1,0 +1,170 @@
+@import "colors.css";
+
+/* --- Global Styles --- */
+* {
+  font-family: 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif;
+  font-size: 13px;
+  min-height: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+}
+
+/* --- Waybar Container --- */
+#waybar {
+  background: transparent;
+  color: @on_surface;
+  margin: 0px;
+  font-weight: 500;
+}
+
+#workspaces {
+  background-color: @surface_container;
+  margin: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#workspaces button {
+  color: @on_surface_variant;
+  border-radius: 6px;
+  padding: 4px 5px;
+  background: transparent;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+#workspaces button.active {
+  color: @on_primary_container;
+  background-color: @primary_container;
+}
+
+#workspaces button:hover {
+  background: @surface_container_high;
+  color: @on_surface;
+}
+
+/* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
+#clock {
+  background-color: @background;
+  padding: 4px 10px;
+  margin: 5px 0px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px @shadow;
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#clock:hover {
+  background-color: @surface_container_high;
+}
+
+#custom-clipboard,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#network,
+#custom-updates,
+#custom-power,
+#battery {
+  background-color: @background;
+  padding: 4px 10px;
+  margin: 5px 0px; 
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#custom-clipboard:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#network:hover,
+#custom-power:hover,
+#custom-updates:hover,
+#battery:hover {
+  background-color: @surface_container_high;
+}
+
+#custom-clipboard {
+  background-color: transparent;
+  margin-right: 6px;
+  border-radius: 6px;
+}
+
+#bluetooth {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+#custom-power {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 10px;
+}
+
+#clock {
+  color: @primary;
+}
+
+#pulseaudio {
+  color: @secondary;
+}
+
+#custom-power {
+  color: @error;
+}
+
+#backlight {
+  color: @secondary;
+}
+
+#network {
+  color: @secondary;
+}
+
+#network.disconnected {
+  color: @error;
+}
+
+#bluetooth {
+  color: @outline;
+}
+
+#bluetooth.on {
+  color: @secondary;
+}
+
+#bluetooth.connected {
+  color: @primary;
+}
+
+#battery {
+  color: @on_surface;
+}
+
+#battery.charging {
+  color: @tertiary;
+}
+
+#battery.warning:not(.charging) {
+  color: @error;
+}
+
+/* --- Tooltip Styles --- */
+tooltip {
+  background-color: @surface_container_high;
+  color: @on_surface;
+  padding: 5px 12px;
+  margin: 5px 0px;
+  border-radius: 6px;
+  border: 1px solid @outline_variant;
+  box-shadow: 0 4px 12px @shadow;
+  font-size: 12px;
+}

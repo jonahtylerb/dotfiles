@@ -1,0 +1,311 @@
+#
+#  ██╗  ██╗██╗   ██╗██████╗ ██████╗ ██╗      █████╗ ███╗   ██╗██████╗ 
+#  ██║  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗██║     ██╔══██╗████╗  ██║██╔══██╗
+#  ███████║ ╚████╔╝ ██████╔╝██████╔╝██║     ███████║██╔██╗ ██║██║  ██║
+#  ██╔══██║  ╚██╔╝  ██╔═══╝ ██╔══██╗██║     ██╔══██║██║╚██╗██║██║  ██║
+#  ██║  ██║   ██║   ██║     ██║  ██║███████╗██║  ██║██║ ╚████║██████╔╝
+#  ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ 
+#
+
+source = colors.conf
+
+#############################
+######### MONITORS ##########
+#############################
+
+monitor = , preferred, auto, 1.2
+
+#################
+### AUTOSTART ###
+#################
+
+exec-once = hyprpm reload -n
+exec-once = wl-paste --watch cliphist store
+exec-once = waybar
+exec-once = hypridle
+exec-once = swww-daemon
+exec-once = pypr
+exec-once = waycorner
+exec-once = hyprctl setcursor Bibata-Modern-Ice 20
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+{{ if eq .chezmoi.hostname "graviton" }}
+exec-once = kando
+{{ else if eq .chezmoi.hostname "tars" }}
+exec-once = kanata
+exec-once = ~/.local/share/gem/ruby/3.4.0/bin/fusuma
+{{ end }}
+
+#############################
+### ENVIRONMENT VARIABLES ###
+#############################
+
+env = HYPRCURSOR_SIZE,20
+env = XCURSOR_SIZE,20
+env = HYPRCURSOR_THEME,"Bibata-Modern-Ice"
+
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+env = XDG_SESSION_DESKTOP,Hyprland
+
+####################
+##### SETTINGS #####
+####################
+
+general {
+    gaps_in = 3
+    gaps_out = 5,10
+
+    snap {
+        enabled = true
+    }
+
+    border_size = 2
+    col.active_border = $primary_container $secondary_container 45deg
+    col.inactive_border = $shadow
+    resize_on_border = false
+  
+    allow_tearing = false
+
+    layout = dwindle
+}
+
+dwindle {
+    force_split = 2
+}
+
+decoration {
+    rounding = 10
+    shadow {
+        enabled = false
+    }
+    blur {
+        enabled = true
+        size = 3
+        passes = 2
+        vibrancy = 0.5
+    }
+}
+
+animations {
+    enabled = yes, please :)
+
+    bezier = easeOutQuint,0.23,1,0.32,1
+    bezier = easeInOutCubic,0.65,0.05,0.36,1
+    bezier = linear,0,0,1,1
+    bezier = almostLinear,0.5,0.5,0.75,1.0
+    bezier = quick,0.15,0,0.1,1
+
+    animation = global, 1, 10, default
+    animation = border, 1, 5.39, easeOutQuint
+    animation = windows, 1, 4.79, easeOutQuint
+    animation = windowsIn, 1, 5, easeOutQuint, popin
+    animation = windowsOut, 1, 5, easeInOutCubic, slide
+    animation = fadeIn, 1, 1.73, almostLinear
+    animation = fadeOut, 1, 1.46, almostLinear
+    animation = fade, 1, 3.03, quick
+    animation = layers, 1, 3.81, easeOutQuint
+    animation = layersIn, 1, 4, easeOutQuint, fade
+    animation = layersOut, 1, 1.5, linear, fade
+    animation = fadeLayersIn, 1, 1.79, almostLinear
+    animation = fadeLayersOut, 1, 1.39, almostLinear
+    animation = workspaces, 1, 4, easeOutQuint, slidefade
+    animation = workspacesIn, 1, 4, easeOutQuint, slidefade
+    animation = workspacesOut, 1, 4, easeOutQuint, slidefade
+    animation = specialWorkspace, 1, 5, easeOutQuint, slidefadevert
+}
+
+master {
+    new_status = master
+}
+
+misc {
+    force_default_wallpaper = 0 # Disable the mascot wallpapers
+    disable_hyprland_logo = true
+    vfr = true
+}
+
+input {
+    kb_layout = us
+    follow_mouse = 1
+    sensitivity = 0
+
+    touchpad {
+        natural_scroll = true
+    }
+}
+
+gestures {
+    workspace_swipe = false
+    workspace_swipe_fingers = 10
+}
+
+debug {
+    damage_tracking = 2
+}
+
+##############################
+########## PLUGINS ###########
+##############################
+
+plugin {
+    dynamic-cursors {
+        enabled = true
+        mode = tilt
+        threshold = 2
+
+        tilt {
+            limit = 3000
+            function = negative_quadratic
+        }
+
+        shake {
+            enabled = true
+            nearest = true
+            threshold = 6.0
+            base = 4.0
+            speed = 8.0
+            influence = 0.0
+            limit = 0
+            timeout = 0
+            effects = true
+            ipc = false
+        }
+
+        hyprcursor {
+            nearest = true
+            enabled = true
+            resolution = -1
+            fallback = clientside
+        }
+
+        overview {
+            exitOnClick = true
+            disableGestures = true
+        }
+    }
+}
+
+###################
+###### RULES ######
+###################
+
+# Ignore maximize requests from apps
+windowrule = suppressevent maximize, class:.*
+
+# Fix some dragging issues with XWayland
+windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+
+windowrule = float, class:kitty-float
+
+# windowrule = plugin:shadewindow invert,class:(org.gnome.Nautilus)
+# windowrule = plugin:shadewindow chromakey bkg=$backgroundRgb similarity=10 targetOpacity=0,fullscreen:0
+
+# Layer rules
+layerrule = blur, launcher
+layerrule = dimaround, launcher
+
+layerrule = blur, logout_dialog
+
+{{ if eq .chezmoi.hostname "tars" }}
+# Special workspaces
+workspace = special:right, on-created-empty:firefox
+workspace = special:left, on-created-empty:kitty
+workspace = special:bottom, on-created-empty:kitty
+{{ end }}
+
+###################
+### KEYBINDINGS ###
+###################
+
+$mainMod = SUPER
+
+bindr = $mainMod, SUPER_L, exec, pkill tofi-drun || tofi-drun
+bind = $mainMod, t, exec, kitty
+bind = $mainMod, b, exec, firefox
+bind = $mainMod, q, killactive,
+bind = $mainMod, E, exec, nautilus
+bind = SUPER_SHIFT, L, exec, hyprlock
+bind = $mainMod, V, exec, ~/.config/tofi/clipboard.sh
+bind = $mainMod, W, exec, ~/.config/tofi/wallpaper.sh
+bind = $mainMod, m, togglefloating
+bind = $mainMod, G, exec, pypr fetch_client_menu
+bind = $mainMod, P, exec, hyprpicker -a
+
+bind = $mainMod, SPACE, togglespecialworkspace, stash
+bind = $mainMod, SHIFT_SPACE, exec, pypr toggle_special stash
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+{{ if eq .chezmoi.hostname "tars" }}
+# Laptop multimedia keys for volume and LCD brightness
+bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
+bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+
+# Requires playerctl
+bindl = , XF86AudioNext, exec, playerctl next
+bindl = , XF86AudioPause, exec, playerctl play-pause
+bindl = , XF86AudioPlay, exec, playerctl play-pause
+bindl = , XF86AudioPrev, exec, playerctl previous
+{{ end }}
+
+##############################
+### WINDOWS AND WORKSPACES ###
+##############################
+
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+# scratchpad
+bind = $mainMod, n, exec, pypr toggle notes
+bind = $mainMod, x, exec, pypr toggle calc
+
+# Toggle fullscreen
+bind = $mainMod, F, fullscreen
+
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+
+bind = $mainMod, h, movefocus, l
+bind = $mainMod, l, movefocus, r
+bind = $mainMod, k, movefocus, u
+bind = $mainMod, j, movefocus, d
+
+bind = $mainMod CTRL, h, movewindow, l
+bind = $mainMod CTRL, l, movewindow, r
+bind = $mainMod CTRL, k, movewindow, u
+bind = $mainMod CTRL, j, movewindow, d
+
+bind = $mainMod CTRL ALT, h, movewindow, mon:l
+bind = $mainMod CTRL ALT, l, movewindow, mon:r
+bind = $mainMod CTRL ALT, k, movewindow, mon:u
+bind = $mainMod CTRL ALT, j, movewindow, mon:d
+
+bind = $mainMod, minus, resizeactive, -10% 0
+bind = $mainMod, equal, resizeactive, 10% 0
