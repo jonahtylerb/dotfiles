@@ -11,3 +11,6 @@ gui:
   branchColorPatterns:
     "^(jonahtylerb|jbrupbacher)": cyan
     "master": yellow
+  theme:
+    inactiveBorderColor:
+      - red
