@@ -20,7 +20,7 @@
 
 #workspaces {
   background-color: @surface_container;
-  margin: 6px 10px;
+  margin: 6px 5px;
   border-radius: 6px;
   border: none;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -106,7 +106,7 @@
 #custom-power {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 #clock {

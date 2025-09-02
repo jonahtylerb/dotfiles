@@ -13,6 +13,13 @@ pacman_updates=$(check_pacman | wc -l)
 aur_updates=$(check_aur | wc -l)
 total_updates=$((pacman_updates + aur_updates))
 
+updates=$(
+    printf "Pacman:\n"
+    checkupdates --nocolor
+    printf "\nAUR:\n"
+    paru -Qua
+)
+
 if [ "$total_updates" -gt 0 ]; then
-    echo "{\"text\": \"📦  $total_updates\", \"tooltip\": \"Pacman: $(check_pacman) \\nAUR: $(check_aur) \" }"
+    echo "{ \"text\": \"  $total_updates\", \"tooltip\": \"${updates//$'\n'/\\r}\" }"
 fi

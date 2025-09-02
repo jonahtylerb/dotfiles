@@ -69,7 +69,7 @@
     },
     "custom/updates": {
         "exec": "~/.config/waybar/packages.sh",
-        "format": "{}",
+        "hide-empty-text": true,
         "interval": 3600,
         "return-type": "json",
         "on-click": "kitty -e paru -Syu"
@@ -84,7 +84,7 @@
         "on-click": "kitty bluetui"
     },
     "custom/clipboard": {
-        "exec": "wl-paste --watch wl-paste",
+        "exec": "~/.config/waybar/clipboard.sh",
         "format": "{}",
         "max-length": 40,
         "tooltip": false,
