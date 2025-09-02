@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if pkill tofi; then
+  exit 0
+fi
+
 # Get the clipboard history list
 cliphist_output=$(cliphist list)
 

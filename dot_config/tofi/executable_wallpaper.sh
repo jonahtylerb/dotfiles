@@ -1,22 +1,35 @@
 #!/bin/bash
 
+if pkill tofi; then
+  exit 0
+fi
+
 WALLPAPER_DIR="$HOME/.config/backgrounds"
 
-cd "$WALLPAPER_DIR" || exit 1
-image_list=$(find . -maxdepth 1 -exec basename {} \; | sed 's/\.[^.]*$//' | sort)
-selected=$(echo "$image_list" | tofi --prompt-text "Select wallpaper: ")
-actual_file=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f -name "$selected.*" | head -1)
+declare -A file_map
+for file in "$WALLPAPER_DIR"/*.*; do
+  [[ -f "$file" ]] || continue
+  basename="$(basename "${file%.*}")"
+  file_map["$basename"]="$file"
+done
+
+selected_name=$(printf '%s\n' "${!file_map[@]}" | sort | tofi --prompt-text "Select wallpaper: ")
+
+selected_file="${file_map[$selected_name]}"
+
+if ! [[ -f "$selected_file" ]]; then
+  exit
+fi
 
 pkill waybar
-
 current_workspace=$(hyprctl activeworkspace | awk 'NR==1 {print $3}')
-
+../hypr/toggleSpecial.sh
 hyprctl dispatch workspace 10
 
-swww img "$actual_file" --transition-type grow --transition-pos bottom --transition-duration 3
+swww img "$selected_file" --transition-type grow --transition-pos bottom --transition-duration 3
 
-wal -i "$actual_file" -n -s -t -e
-matugen image "$actual_file"
+wal -i "$selected_file" -n -s -t -e
+matugen image "$selected_file"
 ln -sf ~/.cache/wal/colors-kitty.conf ~/.config/kitty/16-colors.conf
 
 hyprctl dispatch workspace "$current_workspace"

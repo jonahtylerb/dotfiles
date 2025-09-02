@@ -40,9 +40,7 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 # export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 export NDK_HOME="$ANDROID_HOME/ndk/29.0.13113456"
 
-export QT_STYLE_OVERRIDE=Adwaita-Dark
-
-export EDITOR=neovide
+export EDITOR=nvim
 export TERM=kitty
 export TERMINAL=kitty
 
@@ -64,6 +62,9 @@ path=(
 
 export GEM_HOME="$(gem env user_gemhome)"
 export PATH="$PATH:$GEM_HOME/bin"
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU path fpath
 
 alias unsetAWS='unset $(env | grep AWS | grep -v AWS_REGION | grep -v AWS_DEFAULT_REGION | sed '\''s|=.*||'\'')'
 
