@@ -76,3 +76,8 @@ post_hook = "papirus-folders -C {{closest_color}} --theme Papirus-Dark"
 input_path = './templates/cava-colors.ini'
 output_path = '~/.config/cava/config'
 post_hook = "pkill -USR1 cava"
+
+[templates.mako]
+input_path = './templates/mako.ini'
+output_path = '~/.config/mako/colors'
+post_hook = "makoctl reload"
