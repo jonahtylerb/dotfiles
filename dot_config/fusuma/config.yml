@@ -37,9 +37,6 @@ rotate:
       update:
         command: "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         interval: 2
-hold:
-  3:
-    command: "hyprctl dispatch killactive"
 
 threshold:
   pinch: 0.7
