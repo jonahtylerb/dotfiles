@@ -1,4 +1,4 @@
-	font = "/usr/share/fonts/TTF/JetBrainsMonoNerdFont-Regular.ttf"
+	font = monospace
 	font-size = 24
 	hint-font = false
 
