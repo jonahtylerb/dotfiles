@@ -41,12 +41,6 @@
       "keyColor": "blue"
     },
     {
-      "type": "uptime",
-      "format": "{2}h {3}m",
-      "key": "UPTIME",
-      "keyColor": "blue"
-    },
-    {
       "type": "wifi",
       "key": "WIFI",
       "keyColor": "blue"
@@ -73,6 +67,7 @@
       "key": "RAM",
       "keyColor": "yellow"
     },
-    "break"
+    "break",
+    "colors"
   ]
 }
