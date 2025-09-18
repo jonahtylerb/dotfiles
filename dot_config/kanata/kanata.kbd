@@ -3,7 +3,11 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-       lmet lalt           spc                 rmet rctl
+  lctl lmet lalt           spc            ralt rctl
+)
+
+(defalias
+  td (tap-dance-eager 200 (lmet  (macro lmet M-t)))
 )
 
 (deflayermap (base)
@@ -12,6 +16,7 @@
   q (tap-hold 200 200 q M-q)
   b (tap-hold 200 200 b M-b)
   t (tap-hold 200 200 t M-t)
+  lmet @td
 )
 
 (deflayermap (nav)
