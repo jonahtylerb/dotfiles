@@ -1,11 +1,10 @@
 [config.wallpaper]
 command = "echo"
-set = true
+set = false
 
 [templates.waybar]
 input_path = './templates/colors.css'
 output_path = '~/.config/waybar/colors.css'
-post_hook = 'pkill -SIGUSR2 waybar'
 
 [templates.kitty]
 input_path = './templates/kitty-colors.conf'
@@ -38,6 +37,10 @@ output_path = '~/.config/qt6ct/colors/matugen.conf'
 input_path = './templates/pywalfox-colors.json'
 output_path = '~/.cache/wal/colors.json'
 post_hook = 'pywalfox update'
+
+[templates.zen]
+input_path = './templates/zen.css'
+output_path = '~/.zen/rci61ogy.Default (release)-1/chrome/userChrome.css'
 
 [templates.folder]
 input_path = './templates/folder-color.txt'
