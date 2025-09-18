@@ -36,10 +36,6 @@ alias cd..='cd ..'
 alias cls='clear'
 alias tree='exa --tree --icons=always'
 
-# tar
-alias tarls="tar -tvf"
-alias untar="tar -xf"
-
 # be kind to your terminal
 alias pls=sudo
 alias thx='clear && echo "You are very welcome :)"'
