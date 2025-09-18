@@ -23,12 +23,12 @@ fi
 
 pkill waybar
 current_workspace=$(hyprctl activeworkspace | awk 'NR==1 {print $3}')
-../hypr/toggleSpecial.sh
+~/.config/hypr/toggleSpecial.sh
 hyprctl dispatch workspace 10
 
 swww img "$selected_file" --transition-type grow --transition-pos bottom --transition-duration 3
 
-wal -i "$selected_file" -n -s -t -e
+wal -i "$selected_file" -n -s -t -e --contrast 2 --cols16 lighten
 matugen image "$selected_file"
 ln -sf ~/.cache/wal/colors-kitty.conf ~/.config/kitty/16-colors.conf
 
