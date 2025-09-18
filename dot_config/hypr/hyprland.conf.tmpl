@@ -7,6 +7,27 @@
 #  ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ 
 #
 
+#############################
+### ENVIRONMENT VARIABLES ###
+#############################
+
+env = HYPRCURSOR_SIZE,20
+env = XCURSOR_SIZE,20
+env = HYPRCURSOR_THEME,"Bibata-Modern-Ice"
+
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+env = XDG_SESSION_DESKTOP,Hyprland
+
+env = CLIPHIST_MAX_ITEMS,1000
+env = CLIPHIST_PREVIEW_WIDTH,80
+
+env = ELECTRON_OZONE_PLATFORM_HINT,auto
+
+env = GTK_THEME=Adwaita:dark
+env = GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+env = QT_STYLE_OVERRIDE=Adwaita-Dark
+
 source = colors.conf
 
 #############################
@@ -27,30 +48,14 @@ exec-once = swww-daemon
 exec-once = pypr
 exec-once = waycorner
 exec-once = hyprctl setcursor Bibata-Modern-Ice 20
+exec-once = kando
 exec-once = kdeconnectd
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-{{ if eq .chezmoi.hostname "graviton" }}
-exec-once = kando
-{{ else if eq .chezmoi.hostname "tars" }}
+{{ if eq .chezmoi.hostname "tars" }}
 exec-once = kanata
 exec-once = ~/.local/share/gem/ruby/3.4.0/bin/fusuma
 {{ end }}
-
-#############################
-### ENVIRONMENT VARIABLES ###
-#############################
-
-env = HYPRCURSOR_SIZE,20
-env = XCURSOR_SIZE,20
-env = HYPRCURSOR_THEME,"Bibata-Modern-Ice"
-
-env = XDG_CURRENT_DESKTOP,Hyprland
-env = XDG_SESSION_TYPE,wayland
-env = XDG_SESSION_DESKTOP,Hyprland
-
-env = CLIPHIST_MAX_ITEMS,1000
-env = CLIPHIST_PREVIEW_WIDTH,80
 
 ####################
 ##### SETTINGS #####
@@ -58,7 +63,7 @@ env = CLIPHIST_PREVIEW_WIDTH,80
 
 general {
     gaps_in = 3
-    gaps_out = 5,10
+    gaps_out = 5
 
     snap {
         enabled = true
@@ -126,7 +131,10 @@ master {
 misc {
     force_default_wallpaper = 0 # Disable the mascot wallpapers
     disable_hyprland_logo = true
+    disable_splash_rendering = false
     vfr = true
+    mouse_move_enables_dpms = true
+    key_press_enables_dpms = true
 }
 
 input {
@@ -137,11 +145,6 @@ input {
     touchpad {
         natural_scroll = true
     }
-}
-
-gestures {
-    workspace_swipe = false
-    workspace_swipe_fingers = 10
 }
 
 debug {
@@ -200,10 +203,17 @@ windowrule = suppressevent maximize, class:.*
 # Fix some dragging issues with XWayland
 windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
-windowrule = float, class:kitty-float
-
 # windowrule = plugin:shadewindow invert,class:(org.gnome.Nautilus)
-# windowrule = plugin:shadewindow chromakey bkg=$backgroundRgb similarity=10 targetOpacity=0,fullscreen:0
+# windowrule = plugin:shadewindow chromakey bkg=$backgroundRgb similarity=20 amount=2 targetOpacity=0.2,class:(org.gnome.*)
+windowrule = plugin:shadewindow chromakey bkg=[0 0 0] targetOpacity=0.5,class:(obsidian)
+
+windowrule = noblur, class:kando
+windowrule = opaque, class:kando
+windowrule = size 100% 100%, class:kando
+windowrule = noborder, class:kando
+windowrule = noanim, class:kando
+windowrule = float, class:kando
+windowrule = pin, class:kando
 
 # Layer rules
 layerrule = blur, launcher
@@ -213,11 +223,11 @@ layerrule = blur, logout_dialog
 
 {{ if eq .chezmoi.hostname "tars" }}
 # Special workspaces
-workspace = special:right, on-created-empty:firefox
+workspace = special:down, on-created-empty:kitty
+workspace = special:right, on-created-empty:zen-browser
 workspace = special:left, on-created-empty:kitty
-workspace = special:bottom, on-created-empty:kitty
 {{ end }}
-
+workspace = special:music, on-created-empty:zen-browser --new-window music.youtube.com
 ###################
 ### KEYBINDINGS ###
 ###################
@@ -232,10 +242,15 @@ bind = $mainMod, E, exec, nautilus
 bind = SUPER_SHIFT, L, exec, hyprlock
 bind = $mainMod, V, exec, ~/.config/tofi/clipboard.sh
 bind = $mainMod, W, exec, ~/.config/tofi/wallpaper.sh
+bind = $mainMod, S, exec, grim -g "$(slurp)"
 bind = $mainMod, period, exec, ~/.config/tofi/emoji.sh
 bind = $mainMod, m, togglefloating
 bind = $mainMod, G, exec, pypr fetch_client_menu
 bind = $mainMod, P, exec, hyprpicker -a
+bind = CTRL, Space, global, :menu
+
+# gesture = 3, swipe, move
+# gesture = 4, horizontal, workspace
 
 bind = $mainMod, SPACE, togglespecialworkspace, stash
 bind = $mainMod, SHIFT_SPACE, exec, pypr toggle_special stash
@@ -263,6 +278,11 @@ bindl = , XF86AudioPrev, exec, playerctl previous
 ##############################
 ### WINDOWS AND WORKSPACES ###
 ##############################
+
+bind = $mainMod, Up, movetoworkspace, e+0
+bind = $mainMod, Left, movetoworkspace, special:left
+bind = $mainMod, Right, movetoworkspace, special:right
+bind = $mainMod, Down, movetoworkspace, special:down
 
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2

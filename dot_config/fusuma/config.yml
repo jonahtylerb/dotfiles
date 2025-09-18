@@ -5,7 +5,7 @@ swipe:
     right:
       command: "hyprctl dispatch togglespecialworkspace left"
     up:
-      command: "hyprctl dispatch togglespecialworkspace bottom"
+      command: "hyprctl dispatch togglespecialworkspace down"
     down:
       command: "~/.config/hypr/toggleSpecial.sh"
   4:

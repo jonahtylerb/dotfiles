@@ -5,22 +5,13 @@ size = 10
 timeout_ms = 100
 
 [terminal]
-enter_command = ["hyprctl", "dispatch", "togglespecialworkspace", "bottom"]
-locations = ["bottom"]
+enter_command = ["pypr", "toggle", "btop"]
+locations = ["bottom_left"]
 size = 5
-margin = 100
 timeout_ms = 100
 
-[right]
-enter_command = ["hyprctl", "dispatch", "togglespecialworkspace", "right"]
-locations = ["right"]
+[music]
+enter_command = ["hyprctl", "dispatch", "togglespecialworkspace", "music"]
+locations = ["bottom_right"]
 size = 5
-margin = 100
-timeout_ms = 100
-
-[left]
-enter_command = ["hyprctl", "dispatch", "togglespecialworkspace", "left"]
-locations = ["left"]
-size = 5
-margin = 100
 timeout_ms = 100
