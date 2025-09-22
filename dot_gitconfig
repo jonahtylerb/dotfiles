@@ -16,4 +16,4 @@
 [delta]
 	navigate = true
 	dark = true
-	map-styles = bold purple => syntax "#442200", bold cyan => "#002244"
+	map-styles = bold purple => syntax "#442200", bold cyan => syntax "#002244"
