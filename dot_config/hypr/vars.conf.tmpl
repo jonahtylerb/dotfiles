@@ -1,0 +1,5 @@
+{{ if eq .chezmoi.hostname "graviton" }}
+$monitor = DP-1
+{{ else }}
+$monitor =
+{{ end }}

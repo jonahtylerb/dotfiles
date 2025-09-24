@@ -1,121 +1,100 @@
 {
-    "layer": "top",
-    "position": "top",
-    "margin-bottom": -5,
-    "spacing": 0,
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "custom/clipboard",
-        "bluetooth",
-        "network",
-        "pulseaudio",
-        "backlight",
-        "custom/updates",
-        "battery",
-        "custom/power"
-    ],
-    "custom/arch": {
-        "format": "A",
-        "on-click": "tofi-drun"
+  "layer": "top",
+  "output": ["DP-1", "VGA"],
+  "position": "top",
+  "margin-bottom": -5,
+  "spacing": 0,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "custom/clipboard",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "custom/updates",
+    "battery",
+    "custom/power",
+  ],
+  "custom/arch": {
+    "format": "A",
+    "on-click": "tofi-drun",
+  },
+  "clock": {
+    "timezone": "US/Eastern",
+    "tooltip": true,
+    "format": "{:%H:%M  -  %A, %b %d}",
+    "interval": 60,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
     },
-    "clock": {
-        "timezone": "US/Eastern",
-        "tooltip": true,
-        "format": "{:%H:%M  -  %A, %b %d}",
-        "interval": 60,
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode": "year",
-            "mode-mon-col": 3
-        }
+  },
+  "network": {
+    "format": "{icon} {essid}",
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰖪",
+    "interval": 20,
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "nm-connection-editor",
+  },
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["", "󰃜", "󰃛", "󰃞", "󰃝", "󰃟", "󰃠"],
+    "tooltip": false,
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "],
     },
-    "network": {
-        "format": "{icon} {essid}",
-        "format-wifi": "",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰖪",
-        "interval": 20,
-        "tooltip-format": "{essid} ({signalStrength}%)",
-        "on-click": "nm-connection-editor"
+  },
+  "custom/updates": {
+    "exec": "~/.config/waybar/packages.sh",
+    "hide-empty-text": true,
+    "interval": 3600,
+    "return-type": "json",
+    "on-click": "kitty -e paru -Syu",
+  },
+  "bluetooth": {
+    "format-disabled": "󰂲",
+    "format-on": "󰂯",
+    "format-off": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "",
+    "tooltip": false,
+    "on-click": "kitty bluetui",
+  },
+  "custom/clipboard": {
+    "exec": "~/.config/waybar/clipboard.sh",
+    "format": "{}",
+    "max-length": 40,
+    "tooltip": false,
+    "on-click": "~/.config/tofi/clipboard.sh",
+    "on-click-right": "cliphist list | tofi | cliphist delete",
+    "restart-interval": 3,
+  },
+  "battery": {
+    "interval": 2,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15,
     },
-    "backlight": {
-        "format": "{icon}  {percent}%",
-        "format-icons": [
-            "",
-            "󰃜",
-            "󰃛",
-            "󰃞",
-            "󰃝",
-            "󰃟",
-            "󰃠"
-        ],
-        "tooltip": false
-    },
-    "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "default": [
-                "",
-                "",
-                " "
-            ]
-        }
-    },
-    "custom/updates": {
-        "exec": "~/.config/waybar/packages.sh",
-        "hide-empty-text": true,
-        "interval": 3600,
-        "return-type": "json",
-        "on-click": "kitty -e paru -Syu"
-    },
-    "bluetooth": {
-        "format-disabled": "󰂲",
-        "format-on": "󰂯",
-        "format-off": "󰂲",
-        "format-connected": "󰂱",
-        "format-no-controller": "",
-        "tooltip": false,
-        "on-click": "kitty bluetui"
-    },
-    "custom/clipboard": {
-        "exec": "~/.config/waybar/clipboard.sh",
-        "format": "{}",
-        "max-length": 40,
-        "tooltip": false,
-        "on-click": "~/.config/tofi/clipboard.sh",
-        "on-click-right": "cliphist list | tofi | cliphist delete",
-        "restart-interval": 3
-    },
-    "battery": {
-        "interval": 2,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}  {capacity}%",
-        "format-full": "{icon}  {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-    "custom/power": {
-        "format": "⏻",
-        "on-click": "wlogout -b 2",
-        "on-click-right": "shutdown now",
-        "tooltip": false
-    }
+    "format": "{icon}  {capacity}%",
+    "format-full": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["", "", "", "", ""],
+  },
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "wlogout -b 2",
+    "on-click-right": "shutdown now",
+    "tooltip": false,
+  },
 }
