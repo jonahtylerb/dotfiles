@@ -1,0 +1,32 @@
+{{ if eq .chezmoi.hostname "tars" }}
+monitor = , preferred, auto, 1.2
+
+exec-once = kanata
+exec-once = ~/.local/share/gem/ruby/3.4.0/bin/fusuma
+
+workspace = special:down, on-created-empty:kitty
+workspace = special:right, on-created-empty:zen-browser
+workspace = special:left, on-created-empty:kitty
+
+# Laptop multimedia keys for volume and LCD brightness
+bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
+bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+
+# Requires playerctl
+bindl = , XF86AudioNext, exec, playerctl next
+bindl = , XF86AudioPause, exec, playerctl play-pause
+bindl = , XF86AudioPlay, exec, playerctl play-pause
+bindl = , XF86AudioPrev, exec, playerctl previous
+{{ else if eq .chezmoi.hostname "graviton"}}
+monitor = DP-1, preferred, 0x0, 1
+monitor = HDMI-A-1, preferred, -1080x10, 1, transform, 3
+monitor = DVI-D-1, preferred, 1920x10, 1, transform, 1
+
+# Make DP-1 my main monitor
+workspace= name:1, monitor:DP-1
+exec-once = hyprctl dispatch workspace 1
+{{end}}
