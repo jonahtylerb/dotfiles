@@ -1,5 +1,7 @@
 {{ if eq .chezmoi.hostname "graviton" }}
 $monitor = DP-1
+$monitorCount = 3
 {{ else }}
 $monitor =
+$monitorCount = 1
 {{ end }}

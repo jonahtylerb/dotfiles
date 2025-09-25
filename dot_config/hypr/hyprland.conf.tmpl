@@ -29,6 +29,7 @@ env = GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 env = QT_STYLE_OVERRIDE=Adwaita-Dark
 
 source = colors.conf
+source = vars.conf
 
 #############################
 ######### MONITORS ##########
@@ -294,6 +295,9 @@ bind = $mainMod, Left, movetoworkspace, special:left
 bind = $mainMod, Right, movetoworkspace, special:right
 bind = $mainMod, Down, movetoworkspace, special:down
 
+bind = $mainMod, A, workspace, +$monitorCount
+bind = $mainMod, Z, workspace, -$monitorCount
+
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
 bind = $mainMod, 3, workspace, 3
@@ -304,6 +308,9 @@ bind = $mainMod, 7, workspace, 7
 bind = $mainMod, 8, workspace, 8
 bind = $mainMod, 9, workspace, 9
 bind = $mainMod, 0, workspace, 10
+
+bind = $mainMod SHIFT, A, movetoworkspace, +$monitorCount
+bind = $mainMod SHIFT, Z, movetoworkspace, -$monitorCount
 
 # Move active window to a workspace with mainMod + SHIFT + [0-9]
 bind = $mainMod SHIFT, 1, movetoworkspace, 1
