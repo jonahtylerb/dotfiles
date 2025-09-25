@@ -7,6 +7,8 @@
 	name = Jonah Brupbacher
 [push]
 	autoSetRemote = true
+[pull]
+	rebase = true
 [diff]
 	colorMoved = default
 [core]
