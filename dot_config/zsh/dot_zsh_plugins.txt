@@ -18,3 +18,5 @@ ohmyzsh/ohmyzsh path:plugins/sudo
 # Fishy features
 zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
 zsh-users/zsh-autosuggestions               # Auto-suggestions
+
+Mellbourn/zabb
