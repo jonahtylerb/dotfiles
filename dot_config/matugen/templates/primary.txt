@@ -1,0 +1,1 @@
+{{colors.primary.default.hex_stripped | auto_lightness: 20.0 }}

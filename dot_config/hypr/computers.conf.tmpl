@@ -29,4 +29,6 @@ monitor = DVI-D-1, preferred, 1920x10, 1, transform, 1
 # Make DP-1 my main monitor
 workspace= name:1, monitor:DP-1
 exec-once = hyprctl dispatch workspace 1
+
+exec-once = openrgb -c $(cat ~/.config/OpenRGB/primary.txt)
 {{end}}

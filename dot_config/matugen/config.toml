@@ -43,7 +43,7 @@ input_path = './templates/zen.css'
 output_path = '~/.zen/rci61ogy.Default (release)-1/chrome/userChrome.css'
 
 [templates.folder]
-input_path = './templates/folder-color.txt'
+input_path = './templates/folder.txt'
 output_path = './papirus-folders/folder-color.txt'
 colors_to_compare = [
   { name = "adwaita", color = "#93C0EA" },
@@ -84,3 +84,8 @@ post_hook = "pkill -USR1 cava"
 input_path = './templates/mako.ini'
 output_path = '~/.config/mako/colors'
 post_hook = "makoctl reload"
+
+[templates.openrgb]
+input_path = './templates/primary.txt'
+output_path = '~/.config/OpenRGB/primary.txt'
+post_hook = "openrgb -c $(cat ~/.config/OpenRGB/primary.txt)"
