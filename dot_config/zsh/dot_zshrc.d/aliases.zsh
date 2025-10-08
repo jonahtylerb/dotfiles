@@ -4,11 +4,10 @@
 alias ls='exa -l --icons=always'
 alias g=git
 alias cd=z
-alias n='neovide --fork '
+alias n='nvim'
 alias vi=n
 alias vim=n
 alias c=clear
-alias e=exit
 alias e=exit
 alias lg=lazygit
 alias y=yazi
