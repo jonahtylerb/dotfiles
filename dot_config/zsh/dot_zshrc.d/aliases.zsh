@@ -12,6 +12,8 @@ alias e=exit
 alias lg=lazygit
 alias y=yazi
 
+alias run='nvm use && npm run'
+
 v() {
   nohup ~/.config/zsh/.zshrc.d/neovide.sh "$1" >/dev/null 2>&1 &!
   exit
