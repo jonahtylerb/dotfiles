@@ -31,4 +31,9 @@ workspace= name:1, monitor:DP-1
 exec-once = hyprctl dispatch workspace 1
 
 exec-once = openrgb -c $(cat ~/.config/OpenRGB/primary.txt)
+
+decoration:blur {
+    size = 2
+    passes = 3
+}
 {{end}}
