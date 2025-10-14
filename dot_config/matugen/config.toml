@@ -89,3 +89,7 @@ post_hook = "makoctl reload"
 input_path = './templates/primary.txt'
 output_path = '~/.config/OpenRGB/primary.txt'
 post_hook = "openrgb -c $(cat ~/.config/OpenRGB/primary.txt)"
+
+[templates.obsidian]
+input_path = './templates/obsidian.css'
+output_path = '~/Documents/Notes/.obsidian/snippets/accent.css'
