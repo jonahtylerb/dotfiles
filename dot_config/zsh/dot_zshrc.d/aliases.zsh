@@ -5,6 +5,7 @@ alias ls='exa -l --icons=always'
 alias g=git
 alias cd=z
 alias n='nvim'
+alias v=n
 alias vi=n
 alias vim=n
 alias c=clear
@@ -13,11 +14,6 @@ alias lg=lazygit
 alias y=yazi
 
 alias run='nvm use && npm run'
-
-v() {
-  nohup ~/.config/zsh/.zshrc.d/neovide.sh "$1" >/dev/null 2>&1 &!
-  exit
-}
 
 restart() {
   killall "$1"

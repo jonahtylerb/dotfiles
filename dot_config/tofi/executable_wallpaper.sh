@@ -28,7 +28,7 @@ hyprctl dispatch workspace 10
 
 swww img "$selected_file" --transition-type grow --transition-pos bottom --transition-duration 3
 
-wal -i "$selected_file" -n -s -t -e --contrast 2 --cols16 lighten
+wal -i "$selected_file" -n -s -t -e --cols16
 matugen image "$selected_file"
 ln -sf ~/.cache/wal/colors-kitty.conf ~/.config/kitty/16-colors.conf
 
