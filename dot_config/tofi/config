@@ -45,5 +45,6 @@
 	late-keyboard-init = false
 	multi-instance = false
 	ascii-input = true
+	drun-launch = true
 
 	include = ./colors
