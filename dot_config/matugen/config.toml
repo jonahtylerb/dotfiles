@@ -40,7 +40,7 @@ post_hook = 'pywalfox update'
 
 [templates.zen]
 input_path = './templates/zen.css'
-output_path = '~/.zen/rci61ogy.Default (release)-1/chrome/userChrome.css'
+output_path = '~/.zen/cvt50dua.Default (release)/chrome/userChrome.css'
 
 [templates.folder]
 input_path = './templates/folder.txt'
