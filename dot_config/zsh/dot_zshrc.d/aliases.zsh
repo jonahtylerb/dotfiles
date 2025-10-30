@@ -11,7 +11,6 @@ alias vim=n
 alias c=clear
 alias e=exit
 alias lg=lazygit
-alias y=yazi
 
 alias run='nvm use && npm run'
 
@@ -20,7 +19,13 @@ restart() {
   hyprctl dispatch exec "$1"
 }
 
-alias tt='taskwarrior-tui'
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
 
 # more ways to ls
 alias l=ls
