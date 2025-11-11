@@ -1,0 +1,12 @@
+export HYPRCURSOR_SIZE=20
+export XCURSOR_SIZE=20
+export HYPRCURSOR_THEME="Bibata-Modern-Ice"
+
+export CLIPHIST_MAX_ITEMS=1000
+export CLIPHIST_PREVIEW_WIDTH=80
+
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark

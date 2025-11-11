@@ -1,8 +1,8 @@
 {{ if eq .chezmoi.hostname "tars" }}
 monitor = , preferred, auto, 1
 
-exec-once = kanata
-exec-once = ~/.local/share/gem/ruby/3.4.0/bin/fusuma
+exec-once = uwsm app -- kanata
+exec-once = uwsm app -- ~/.local/share/gem/ruby/3.4.0/bin/fusuma
 
 workspace = special:down, on-created-empty:kitty
 workspace = special:right, on-created-empty:zen-browser
@@ -26,11 +26,7 @@ monitor = DP-1, preferred, 0x0, 1
 monitor = HDMI-A-1, preferred, -1080x10, 1, transform, 3
 monitor = DVI-D-1, preferred, 1920x10, 1, transform, 1
 
-# Make DP-1 my main monitor
-workspace= name:1, monitor:DP-1
-exec-once = hyprctl dispatch workspace 1
-
-exec-once = openrgb -c $(cat ~/.config/OpenRGB/primary.txt)
+exec-once = uwsm app -- openrgb -c $(cat ~/.config/OpenRGB/primary.txt)
 
 decoration:blur {
     size = 2
