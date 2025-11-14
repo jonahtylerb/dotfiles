@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto-sync Notes with rclone
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/rclone-watch.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
