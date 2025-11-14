@@ -12,16 +12,16 @@ hide_delay = 1
 
 [scratchpads.calc]
 use = "template"
-animation = "fromRight"
-command = "gnome-calculator"
-class = "org.gnome.Calculator"
-size = "400px 60%"
+animation = "fromBottom"
+command = "kitty --app-id=calc -- qalc -i"
+class = "calc"
+size = "40% 20%"
 
 [scratchpads.notes]
 use = "template"
 animation = "fromRight"
-command = "gnome-text-editor"
-class = "org.gnome.TextEditor"
+command = "kitty --app-id=todo -- nvim ~/Documents/Notes/todo.md"
+class = "todo"
 size = "500px 800px"
 
 [scratchpads.btop]
