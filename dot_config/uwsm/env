@@ -7,6 +7,6 @@ export CLIPHIST_PREVIEW_WIDTH=80
 
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 
-export GTK_THEME=Adwaita:dark
+export GTK_THEME=adw-gtk3-dark
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
-export QT_STYLE_OVERRIDE=Adwaita-Dark
+export QT_STYLE_OVERRIDE=adw-gtk3-dark
