@@ -38,7 +38,7 @@
     "format-disconnected": "󰖪",
     "interval": 20,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "nm-connection-editor",
+    "on-click": "kitty nmtui",
   },
   "backlight": {
     "format": "{icon}  {percent}%",
