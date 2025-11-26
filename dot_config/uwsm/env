@@ -10,3 +10,6 @@ export ELECTRON_OZONE_PLATFORM_HINT=auto
 export GTK_THEME=adw-gtk3-dark
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export QT_STYLE_OVERRIDE=adw-gtk3-dark
+
+export QT_QPA_PLATFORMTHEME=xdgdesktopportal
+export GTK_USE_PORTAL=1
