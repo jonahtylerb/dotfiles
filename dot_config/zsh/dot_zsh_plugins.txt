@@ -19,4 +19,4 @@ ohmyzsh/ohmyzsh path:plugins/sudo
 zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
 zsh-users/zsh-autosuggestions               # Auto-suggestions
 
-Mellbourn/zabb
+jeffreytse/zsh-vi-mode
