@@ -5,7 +5,7 @@ size = 10
 timeout_ms = 100
 
 [terminal]
-enter_command = ["pypr", "toggle", "btop"]
+enter_command = ["task-manager"]
 locations = ["bottom_left"]
 size = 5
 timeout_ms = 100
