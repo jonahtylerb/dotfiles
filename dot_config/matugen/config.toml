@@ -12,10 +12,6 @@ input_path = './templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
 
-[templates.tofi]
-input_path = './templates/tofi-colors'
-output_path = '~/.config/tofi/colors'
-
 [templates.gtk3]
 input_path = './templates/gtk-colors.css'
 output_path = '~/.config/gtk-3.0/gtk.css'
@@ -37,39 +33,6 @@ post_hook = 'pywalfox update'
 [templates.zen]
 input_path = './templates/zen.css'
 output_path = '~/.zen/cvt50dua.Default (release)/chrome/userChrome.css'
-
-[templates.folder]
-input_path = './templates/folder.txt'
-output_path = './papirus-folders/folder-color.txt'
-colors_to_compare = [
-  { name = "adwaita", color = "#93C0EA" },
-  { name = "black", color = "#4F4F4F" },
-  { name = "blue", color = "#5294E2" },
-  { name = "bluegrey", color = "#607D8B" },
-  { name = "breeze", color = "#57B8EC" },
-  { name = "brown", color = "#AE8E6C" },
-  { name = "carmine", color = "#A30002" },
-  { name = "cyan", color = "#00BCD4" },
-  { name = "darkcyan", color = "#45ABB7" },
-  { name = "deeporange", color = "#EB6637" },
-  { name = "green", color = "#87B158" },
-  { name = "grey", color = "#8E8E8E" },
-  { name = "indigo", color = "#5C6BC0" },
-  { name = "megenta", color = "#CA71DF" },
-  { name = "nordic", color = "#81A1C1" },
-  { name = "orange", color = "#EE923A" },
-  { name = "palebrown", color = "#D1BFAE" },
-  { name = "paleorange", color = "#EECA8F" },
-  { name = "pink", color = "#F06292" },
-  { name = "red", color = "#E25252" },
-  { name = "teal", color = "#16A085" },
-  { name = "violet", color = "#7E57C2" },
-  { name = "white", color = "#E4E4E4" },
-  { name = "yaru", color = "#676767" },
-  { name = "yellow", color = "#F9BD30" },
-]
-compare_to = "{{colors.primary.default.hex}}"
-post_hook = "papirus-folders -C {{closest_color}} --theme Papirus-Dark"
 
 [templates.cava]
 input_path = './templates/cava-colors.ini'
