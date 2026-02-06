@@ -21,9 +21,7 @@ if ! [[ -f "$selected_file" ]]; then
   exit
 fi
 
-~/.config/hypr/toggleSpecial.sh
-
-swww img "$selected_file" --transition-type grow --transition-pos bottom --transition-duration 3
+swww img "$selected_file" --transition-type fade --transition-duration 3
 
 wal -i "$selected_file" -n -s -t -e --cols16
 matugen image "$selected_file"
