@@ -1,8 +1,0 @@
-#!/bin/bash
-kitten panel \
-  --edge=center \
-  --focus-policy=exclusive \
-  --layer=top --margin-bottom=100 \
-  --margin-top=100 --margin-right=100 \
-  --margin-left=100 --app-id=task-manager \
-  -c ~/.config/kitty/transparent.conf btop

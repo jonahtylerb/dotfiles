@@ -1,9 +1,0 @@
-#!/bin/bash
-
-kitten panel \
-  --edge=center \
-  --focus-policy=exclusive \
-  --layer=top \
-  --app-id=notes \
-  -c ~/.config/kitty/transparent.conf \
-  -- nvim ~/Documents/Notes/todo.md "+lua Snacks.zen()"

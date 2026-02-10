@@ -7,43 +7,6 @@ input_path = './templates/kitty-colors.conf'
 output_path = '~/.config/kitty/current-theme.conf'
 post_hook = 'pkill -SIGUSR1 kitty'
 
-[templates.hyprland]
-input_path = './templates/hyprland-colors.conf'
-output_path = '~/.config/hypr/colors.conf'
-post_hook = 'hyprctl reload'
-
-[templates.gtk3]
-input_path = './templates/gtk-colors.css'
-output_path = '~/.config/gtk-3.0/gtk.css'
-post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme ~/.themes/adw-gtk3-dark'
-
-[templates.gtk4]
-input_path = './templates/gtk-colors.css'
-output_path = '~/.config/gtk-4.0/gtk.css'
-
-[templates.qt6ct]
-input_path = './templates/qtct-colors.conf'
-output_path = '~/.config/qt6ct/colors/matugen.conf'
-
-[templates.pywalfox]
-input_path = './templates/pywalfox-colors.json'
-output_path = '~/.cache/wal/colors.json'
-post_hook = 'pywalfox update'
-
-[templates.zen]
-input_path = './templates/zen.css'
-output_path = '~/.zen/cvt50dua.Default (release)/chrome/userChrome.css'
-
-[templates.cava]
-input_path = './templates/cava-colors.ini'
-output_path = '~/.config/cava/config'
-post_hook = "pkill -USR1 cava"
-
-[templates.mako]
-input_path = './templates/mako.ini'
-output_path = '~/.config/mako/colors'
-post_hook = "makoctl reload"
-
 [templates.openrgb]
 input_path = './templates/primary.txt'
 output_path = '~/.config/OpenRGB/primary.txt'

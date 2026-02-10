@@ -1,9 +1,3 @@
-[overview]
-enter_command = ["hyprctl", "dispatch", "overview:toggle"]
-locations = ["top_left"]
-size = 10
-timeout_ms = 100
-
 [terminal]
 enter_command = ["task-manager"]
 locations = ["bottom_left"]
