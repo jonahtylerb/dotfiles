@@ -15,7 +15,7 @@ fi
 
 # Run your commands
 wal -i "$1" -n -s -t -e --cols16
-matugen image "$1"
+matugen image "$1" --source-color-index 0
 ln -sf ~/.cache/wal/colors-kitty.conf ~/.config/kitty/16-colors.conf
 
 # Save current wallpaper path

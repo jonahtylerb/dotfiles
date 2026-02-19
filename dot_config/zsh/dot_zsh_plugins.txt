@@ -8,9 +8,6 @@ aloxaf/fzf-tab
 # History
 belak/zsh-utils path:history
  
-# Prompt
-romkatv/powerlevel10k
- 
 # Utilities
 romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/sudo

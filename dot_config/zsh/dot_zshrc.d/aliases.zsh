@@ -12,6 +12,8 @@ alias c=clear
 alias e=exit
 alias lg=lazygit
 
+alias apply="chezmoi re-add ~/.config/noctalia/settings.json && chezmoi apply"
+
 alias run='nvm use && npm run'
 
 restart() {

@@ -1,0 +1,15 @@
+[config]
+
+[templates.starship]
+input_path = "~/.config/noctalia/templates/starship.toml"
+output_path = "~/.config/starship.toml"
+
+[templates.kitty]
+input_path = "~/.config/noctalia/templates/kitty.conf"
+output_path = "~/.config/kitty/current-theme.conf"
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.openrgb]
+input_path = './templates/primary.txt'
+output_path = '~/.config/OpenRGB/primary.txt'
+post_hook = 'if command -v openrgb &> /dev/null; then openrgb -c "$(cat ~/.config/OpenRGB/primary.txt)"; fi'

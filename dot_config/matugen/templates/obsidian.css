@@ -1,5 +1,0 @@
-body {
-  --accent-h: {{colors.primary.default.hue}};
-  --accent-s: {{colors.primary.default.saturation}};
-  --accent-l: {{colors.primary.default.lightness}};
-}
