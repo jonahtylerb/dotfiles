@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# Resize and crop background images for each monitor.
+# Re-runs when the source backgrounds directory changes.
+#
+# Source backgrounds:
+{{ range (glob (joinPath .chezmoi.sourceDir "dot_config/backgrounds/*")) -}}
+# {{ base . }}
+{{ end -}}
+
+set -euo pipefail
+
+BACKGROUNDS_DIR="$HOME/.config/backgrounds"
+
+# Skip if not running in a Hyprland session
+if ! command -v hyprctl &>/dev/null || ! hyprctl monitors -j &>/dev/null 2>&1; then
+    echo "hyprctl not available, skipping background processing"
+    exit 0
+fi
+
+# Parse monitor info: name, x position, actual width/height (accounting for rotation)
+monitor_info=$(hyprctl monitors -j | jq -r '
+    .[] | 
+    . as $m |
+    if ($m.transform == 1 or $m.transform == 3)
+    then { name: $m.name, x: $m.x, w: $m.height, h: $m.width }
+    else { name: $m.name, x: $m.x, w: $m.width,  h: $m.height }
+    end |
+    "\(.x) \(.name) \(.w) \(.h)"
+')
+
+if [ -z "$monitor_info" ]; then
+    echo "Could not parse monitor info, skipping"
+    exit 0
+fi
+
+# Sort monitors by X position and assign gravity
+mapfile -t sorted_monitors < <(echo "$monitor_info" | sort -n)
+
+total=${#sorted_monitors[@]}
+
+declare -A monitor_gravity
+declare -A monitor_dims
+
+for i in "${!sorted_monitors[@]}"; do
+    read -r _x name w h <<< "${sorted_monitors[$i]}"
+
+    if   [ "$i" -eq 0 ] && [ "$total" -gt 1 ]; then
+        gravity="West"
+    elif [ "$i" -eq $((total - 1)) ] && [ "$total" -gt 1 ]; then
+        gravity="East"
+    else
+        gravity="Center"
+    fi
+
+    monitor_gravity["$name"]="$gravity"
+    monitor_dims["$name"]="${w}x${h}"
+done
+
+# Process each background image
+shopt -s nullglob
+images=("$BACKGROUNDS_DIR"/*.{jpg,jpeg,png,webp,bmp,tiff,gif,JPG,JPEG,PNG,WEBP})
+shopt -u nullglob
+
+if [ ${#images[@]} -eq 0 ]; then
+    echo "No background images found in $BACKGROUNDS_DIR"
+    exit 0
+fi
+
+for img in "${images[@]}"; do
+    filename=$(basename "$img")
+
+    for name in "${!monitor_gravity[@]}"; do
+        gravity="${monitor_gravity[$name]}"
+        dims="${monitor_dims[$name]}"
+        out_dir="$BACKGROUNDS_DIR/$name"
+        out_file="$out_dir/$filename"
+
+        # Skip if already processed
+        if [ -f "$out_file" ]; then
+            continue
+        fi
+
+        mkdir -p "$out_dir"
+        echo "Processing: $filename → $name ($dims, gravity $gravity)"
+        magick "$img" -resize "${dims}^" -gravity "$gravity" -extent "$dims" "$out_file"
+    done
+done
+
+echo "Background processing complete"
