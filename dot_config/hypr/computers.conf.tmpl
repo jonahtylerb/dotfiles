@@ -25,8 +25,8 @@ bindl = , switch:on:[Lid Switch], exec, hyprctl dispatch dpms off
 bindl = , switch:off:[Lid Switch], exec, hyprctl dispatch dpms on
 {{ else if eq .chezmoi.hostname "graviton"}}
 monitor = DP-1, preferred, 0x0, 1
-monitor = HDMI-A-1, preferred, -1080x10, 1, transform, 3
-monitor = DVI-D-1, preferred, 1920x10, 1, transform, 1
+monitor = HDMI-A-1, preferred, -1080x0, 1, transform, 3
+monitor = DVI-D-1, preferred, 1920x0, 1, transform, 1
 
 exec-once = uwsm app -- openrgb -c $(cat ~/.config/OpenRGB/primary.txt)
 
