@@ -1,0 +1,2 @@
+[pyprland]
+plugins = ["gamemode", "expose", "layout_center"]
